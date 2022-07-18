@@ -12,31 +12,31 @@ interface HomeProps {
 }
 
 
-export default function Home({product}: HomeProps) {
+export default function Home({ product }: HomeProps) {
   return (
     <>
       <Head>
         <title>Home | ig.news</title>
       </Head>
       <main className={styles.contentContainer}>
-        <section className={styles.hero}>          
+        <section className={styles.hero}>
           <span>Hey, Welcome</span>
           <h1>News about <br />the <span>React</span> world</h1>
           <p>
             Get acess to all the publications <br />
             <span>for {product.amount} month</span>
           </p>
-          <SubscribeButton priceId={product.priceId}/>
+          <SubscribeButton priceId={product.priceId} />
         </section>
 
-        <img src='/images/avatar.svg' alt='girl coding'/>
+        <img src='/images/avatar.svg' alt='girl coding' />
       </main>
     </>
   )
 }
 
 export const getStaticProps: GetStaticProps = async () => {
-  const price = await stripe.prices.retrieve('price_1K7l6cHxGmT7YN09luQeY4qJ', {
+  const price = await stripe.prices.retrieve('price_1KDvMPCdXydFwb7YkVZBT9iI', {
     expand: ['product']
   })
 
@@ -54,6 +54,6 @@ export const getStaticProps: GetStaticProps = async () => {
     },
     revalidate: 60 * 60 * 24, // 24 hours
   }
-    
-  
+
+
 }
